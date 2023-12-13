@@ -10,6 +10,7 @@ RUN apt-get update \
 
 COPY ./docker/php-apache/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY ./docker/php-apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY src /var/www
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN a2enmod headers

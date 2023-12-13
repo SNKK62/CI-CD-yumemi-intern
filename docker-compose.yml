@@ -2,6 +2,7 @@ version: '3.9'
 services:
     app:
         image: 'c18f-intern-app'
+        platform: linux/amd64
         build:
             context: .
             dockerfile: ./docker/php-apache/Dockerfile
@@ -11,6 +12,7 @@ services:
             - ./src:/var/www
     db:
         image: 'mysql/mysql-server:8.0.28'
+        platform: linux/amd64
         ports:
             - '${DB_HOST_PORT}:3306'
         environment:
