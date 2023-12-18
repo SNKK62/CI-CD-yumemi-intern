@@ -13,6 +13,8 @@ COPY ./docker/php-apache/000-default.conf /etc/apache2/sites-available/000-defau
 COPY ./src /var/www
 COPY --from=public.ecr.aws/docker/library/composer:lts /usr/bin/composer /usr/bin/composer
 
+RUN composer install
+
 RUN a2enmod headers
 RUN a2enmod rewrite
 
