@@ -1,4 +1,4 @@
-FROM php:8.1.9-apache
+FROM public.ecr.aws/docker/library/php:8.1.9-apache
 
 RUN apt-get update \
     && apt-get install -y git emacs vim unzip --no-install-recommends \
