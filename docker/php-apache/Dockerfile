@@ -18,3 +18,4 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www
 RUN chmod -R 777 storage bootstrap/cache
+RUN composer install
