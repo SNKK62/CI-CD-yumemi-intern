@@ -2,7 +2,7 @@
     "executionRoleArn": "arn:aws:iam::280107060642:role/ecsTaskExecutionRole",
     "containerDefinitions": [
         {
-            "name": "c18f-intern-taskdef",
+            "name": "c18f-intern-app",
             "image": "<IMAGE1_NAME>",
             "essential": true,
             "portMappings": [
@@ -20,5 +20,5 @@
     "networkMode": "awsvpc",
     "cpu": "256",
     "memory": "512",
-    "family": "ecs-demo"
+    "family": "c18f-intern-task-def"
 }
