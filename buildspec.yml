@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+  build:
+    commands:
+      - docker build -t $IMAGE_NAME -f docker/php-apache/Dockerfile .
+  post_build:
+    commands:
+      - export IMAGE_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:latest
+      - docker tag $IMAGE_NAME:latest $IMAGE_URI
+      - docker push $IMAGE_URI
+      - printf '{"ImageURI":"%s"}' $IMAGE_URI > imageDetail.json
+artifacts:
+  files:
+    - imageDetail.json
+    - taskdef.json
+    - appspec.yaml
+  name: c18f-intern-artifacts-$(date +%Y-%m-%d)
+  discard-paths: yes
