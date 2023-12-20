@@ -31,3 +31,6 @@ $ curl http://localhost:30080/api/health-check
 が返ってきたら成功です
 
 ```
+
+### アーキテクチャ図
+<img src='./architecture.png'>
